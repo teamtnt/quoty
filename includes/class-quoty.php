@@ -151,8 +151,13 @@ class Quoty {
 
 		$plugin_admin = new Quoty_Admin( $this->get_Quoty(), $this->get_version() );
 
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'quoty_admin_menu' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'settings_api_init' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		$this->loader->add_filter( 'plugin_action_links_quoty/quoty.php', $plugin_admin, 'add_settings_link' );
+
 
 	}
 

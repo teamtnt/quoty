@@ -27,9 +27,9 @@ class Quoty_Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $Quoty    The ID of this plugin.
+	 * @var      string    $quoty    The ID of this plugin.
 	 */
-	private $Quoty;
+	private $quoty;
 
 	/**
 	 * The version of this plugin.
@@ -47,9 +47,9 @@ class Quoty_Admin {
 	 * @param      string    $Quoty       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $Quoty, $version ) {
+	public function __construct( $quoty, $version ) {
 
-		$this->Quoty = $Quoty;
+		$this->quoty = $quoty;
 		$this->version = $version;
 
 	}
@@ -61,19 +61,7 @@ class Quoty_Admin {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Quoty_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Quoty_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_style( $this->Quoty, plugin_dir_url( __FILE__ ) . 'css/quoty-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->quoty, plugin_dir_url( __FILE__ ) . 'css/quoty-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -84,20 +72,52 @@ class Quoty_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Quoty_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Quoty_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_script( $this->Quoty, plugin_dir_url( __FILE__ ) . 'js/quoty-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
+	/**
+	 * Register the Settings page.
+	 *
+	 * @since    1.0.0
+	 */
+	public function quoty_admin_menu() {
+
+		 add_options_page( __('Qutoy Settings', $this->quoty), __('Qutoy Settings', $this->quoty), 'manage_options', $this->quoty, array($this, 'display_plugin_admin_page'));
+
+	}
+
+	/**
+	 * Callback function for the admin settings page.
+	 *
+	 * @since    1.0.0
+	 */
+	public function display_plugin_admin_page(){
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/quoty-admin-display.php';
+
+	}
+
+	/**
+	 * Plugin Settings Link on plugin page
+	 *
+	 * @since 		1.0.0
+	 * @return 		mixed 			The settings field
+	 */
+	function add_settings_link( $links ) {
+
+		$mylinks = array(
+			'<a href="' . admin_url( 'options-general.php?page=quoty' ) . '">Settings</a>',
+		);
+		return array_merge( $links, $mylinks );
+	}
+
+	/**
+	 * Creates our settings sections with fields etc.
+	 *
+	 * @since    1.0.0
+	 */
+	public function settings_api_init() {
+
+	}
 }
