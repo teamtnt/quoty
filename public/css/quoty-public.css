@@ -1,4 +1,51 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+
+.highlightMenu {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    top: 0;
+    left: 0
+}
+
+.highlightMenu-inner {
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(49, 49, 47, 0.99), #262625);
+    background-repeat: repeat-x;
+    border-radius: 5px;
+    padding: 9px 5px;
+}
+
+.highlightMenu-inner button {
+    border: none;
+    color: #FFF;
+    font-size: 20px;
+    padding: 0 8px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.highlightMenu .separator {
+    display: inline-block;
+    vertical-align: top;
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+}
+.highlightMenu .highlightMenu-arrowClip {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    clip: rect(10px 20px 20px 0);
+    margin-left: -10px
+}
+.highlightMenu .highlightMenu-arrowClip .highlightMenu-arrow {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #262625;
+    -webkit-transform: rotate(45deg) scale(.5);
+    -ms-transform: rotate(45deg) scale(.5);
+    transform: rotate(45deg) scale(.5)
+}
+.highlight_menu_animate {
+  transition: top 75ms ease-out,left 75ms ease-out;
+}

@@ -27,9 +27,9 @@ class Quoty_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $Quoty    The ID of this plugin.
+	 * @var      string    $quoty    The ID of this plugin.
 	 */
-	private $Quoty;
+	private $quoty;
 
 	/**
 	 * The version of this plugin.
@@ -44,12 +44,12 @@ class Quoty_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $Quoty       The name of the plugin.
+	 * @param      string    $quoty       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $Quoty, $version ) {
+	public function __construct( $quoty, $version ) {
 
-		$this->Quoty = $Quoty;
+		$this->quoty = $quoty;
 		$this->version = $version;
 
 	}
@@ -72,9 +72,9 @@ class Quoty_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_style( $this->Quoty, plugin_dir_url( __FILE__ ) . 'css/quoty-public.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( $this->quoty, plugin_dir_url( __FILE__ ) . 'css/quoty-public.css', array(), $this->version, 'all' );
+		wp_register_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+		wp_enqueue_style('font-awesome');
 	}
 
 	/**
@@ -96,8 +96,12 @@ class Quoty_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->Quoty, plugin_dir_url( __FILE__ ) . 'js/quoty-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->quoty, plugin_dir_url( __FILE__ ) . 'js/quoty-public.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	public function display() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/quoty-public-display.php';
 	}
 
 }

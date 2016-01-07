@@ -1,32 +1,36 @@
 (function( $ ) {
 	'use strict';
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+
+	    $(function(){
+	        var menu = $('.highlightMenu');
+
+	        $(document.body).on('mouseup', function (evt) {
+	            var s = document.getSelection(),
+	                r = s.getRangeAt(0);
+	            if (r && s.toString()) {
+	                var p = r.getBoundingClientRect();
+	                if (p.left || p.top) {
+	                    menu.css({
+	                        left: (p.left + (p.width / 2)) - (menu.width() / 2),
+	                        top: (p.top - menu.height() - 10),
+	                        display: 'block',
+	                        opacity: 0
+	                    })
+	                    .animate({
+	                        opacity:1
+	                    }, 100);
+
+	                    setTimeout(function() {
+	                        menu.addClass('highlight_menu_animate');
+	                    }, 10);
+	                    return;
+	                }
+	            }
+	            menu.animate({ opacity:0 }, function () {
+	                menu.hide().removeClass('highlight_menu_animate');
+	            });
+	        });
+	    });
 
 })( jQuery );
