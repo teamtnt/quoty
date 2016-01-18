@@ -96,7 +96,7 @@ class Quoty_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->quoty, plugin_dir_url( __FILE__ ) . 'js/quoty-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->quoty, plugin_dir_url( __FILE__ ) . 'js/dist/quoty-public.js', array( 'jquery' ), $this->version, true );
 
 	}
 
