@@ -56,11 +56,11 @@ var Quoty = React.createClass({
 
   render: function() {
     var platforms = [];
-    platforms.push(<ShareOnGooglePlus key="google" title={this.state.title} text={this.state.text} url={this.state.url}/>);
-    platforms.push(<ShareOnLinkedIn key="linkedin" />);
+    platforms.push(<ShareOnGooglePlus key="google" title={this.state.title} text={this.state.text} url={this.state.url} />);
+    platforms.push(<ShareOnLinkedIn key="linkedin" title={this.state.title} text={this.state.text} url={this.state.url} />);
     platforms.push(<ShareOnTwitter key="twitter" title={this.state.title} text={this.state.text} url={this.state.url} />);
-    platforms.push(<ShareOnFacebook key="facebook" />);
-    platforms.push(<ShareOnPinterest key="pinterest" />);
+    platforms.push(<ShareOnFacebook key="facebook" title={this.state.title} text={this.state.text} url={this.state.url} />);
+    platforms.push(<ShareOnPinterest key="pinterest" title={this.state.title} text={this.state.text} url={this.state.url} />);
 
     return (
       <div className="highlightMenu" ref="quotyContainer">

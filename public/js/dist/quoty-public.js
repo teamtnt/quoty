@@ -59,10 +59,10 @@ var Quoty = React.createClass({
   render: function () {
     var platforms = [];
     platforms.push(React.createElement(ShareOnGooglePlus, { key: 'google', title: this.state.title, text: this.state.text, url: this.state.url }));
-    platforms.push(React.createElement(ShareOnLinkedIn, { key: 'linkedin' }));
+    platforms.push(React.createElement(ShareOnLinkedIn, { key: 'linkedin', title: this.state.title, text: this.state.text, url: this.state.url }));
     platforms.push(React.createElement(ShareOnTwitter, { key: 'twitter', title: this.state.title, text: this.state.text, url: this.state.url }));
-    platforms.push(React.createElement(ShareOnFacebook, { key: 'facebook' }));
-    platforms.push(React.createElement(ShareOnPinterest, { key: 'pinterest' }));
+    platforms.push(React.createElement(ShareOnFacebook, { key: 'facebook', title: this.state.title, text: this.state.text, url: this.state.url }));
+    platforms.push(React.createElement(ShareOnPinterest, { key: 'pinterest', title: this.state.title, text: this.state.text, url: this.state.url }));
 
     return React.createElement(
       'div',
@@ -173,10 +173,18 @@ var React = require('react');
 var ShareOnLinkedIn = React.createClass({
   displayName: "ShareOnLinkedIn",
 
+  handleClick: function () {
+    var url = encodeURIComponent(this.props.url),
+        title = encodeURIComponent(this.props.title),
+        text = encodeURIComponent(this.props.text);
+
+    var popup = "http://www.linkedin.com/shareArticle?mini=true&url=" + url + "&title=" + title;
+    window.open(popup, title, "height=" + 500 + ",width=" + 500);
+  },
   render: function () {
     return React.createElement(
       "button",
-      null,
+      { onClick: this.handleClick },
       React.createElement("span", { className: "fa fa-linkedin" })
     );
   }
