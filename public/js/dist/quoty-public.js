@@ -162,7 +162,7 @@ var GooglePlus = React.createClass({
         text = encodeURIComponent(this.props.text);
 
     var popup = "https://plus.google.com/share?url=" + url;
-    window.open(popup, title, "height=" + 500 + ",width=" + 600);
+    window.open(popup, title, "height=" + 600 + ",width=" + 500);
   },
   render: function () {
     return React.createElement(
@@ -206,6 +206,14 @@ var React = require('react');
 var ShareOnPinterest = React.createClass({
   displayName: "ShareOnPinterest",
 
+  handleClick: function () {
+    var url = encodeURIComponent(this.props.url),
+        title = encodeURIComponent(this.props.title),
+        text = encodeURIComponent(this.props.text);
+
+    var popup = "http://www.pinterest.com/pin/find/?url=" + url + "&description=" + text;
+    window.open(popup, title, "height=" + 700 + ",width=" + 850);
+  },
   render: function () {
     return React.createElement(
       "button",
@@ -242,7 +250,7 @@ var ShareOnTwitter = React.createClass({
         text = encodeURIComponent(this.props.text);
 
     var popup = "https://twitter.com/intent/tweet?text=" + text + "&url=" + url;
-    window.open(popup, title, "height=" + 500 + ",width=" + 700);
+    window.open(popup, title, "height=" + 300 + ",width=" + 500);
   },
   render: function () {
     return React.createElement(

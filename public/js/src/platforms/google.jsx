@@ -7,7 +7,7 @@ var GooglePlus = React.createClass({
     text    = encodeURIComponent(this.props.text);
 
     var popup = "https://plus.google.com/share?url=" + url;
-    window.open(popup, title, "height=" + 500 + ",width=" + 600)
+    window.open(popup, title, "height=" + 600 + ",width=" + 500)
   },
   render: function() {
     return (

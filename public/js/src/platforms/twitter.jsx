@@ -7,7 +7,7 @@ var ShareOnTwitter = React.createClass({
     text    = encodeURIComponent(this.props.text);
 
     var popup = "https://twitter.com/intent/tweet?text=" + text + "&url=" + url;
-    window.open(popup, title, "height=" + 500 + ",width=" + 700)
+    window.open(popup, title, "height=" + 300 + ",width=" + 500)
   },
   render: function() {
     return (
