@@ -13,7 +13,11 @@ var Quoty = React.createClass({
   displayName: 'Quoty',
 
   getInitialState: function () {
-    return { windowWidth: window.innerWidth };
+    return {
+      url: jQuery('meta[property="og:url"]').attr("content") || jQuery('meta[property="og:url"]').attr("value") || window.location.href,
+      text: "",
+      title: document.title
+    };
   },
 
   handleSelection: function (e) {
@@ -35,11 +39,7 @@ var Quoty = React.createClass({
         setTimeout(function () {
           menu.addClass('highlight_menu_animate');
         }, 10);
-        this.setState({
-          text: s.toString(),
-          title: "My Fancy Title",
-          url: "http://www.google.com"
-        });
+        this.setState({ text: s.toString() });
         return;
       }
     }
@@ -82,48 +82,6 @@ var Quoty = React.createClass({
 });
 
 ReactDOM.render(React.createElement(Quoty, null), document.getElementById('quotyContainer'));
-
-// app.directive("shareContent", ["$window", function(e) {
-//     return {
-//         restrict: "A",
-//         link: function(r, n, o) {
-//             var i = function(r) {
-//                 function n() {
-//                     var r = encodeURIComponent(o.shareUrl),
-//                         n = encodeURIComponent(o.shareTitle),
-//                         i = "",
-//                         c = 480,
-//                         a = 700;
-//                     switch ((n += o.sharePowered ? " powered by @Krowdster" : " via @Krowdster"), n.replace(/\s\s+/g, " "), o.shareType) {
-//                         case "buffer":
-//                             c = 600, i = "https://bufferapp.com/add?text=" + n + "&url=" + r;
-//                             break;
-//                         case "facebook":
-//                             c = 300, a = 600, i = "http://www.facebook.com/sharer/sharer.php?s=100&p[url]=" + r + "&p[images][0]=&p[title]=" + n;
-//                             break;
-//                         case "twitter":
-//                             c = 500, i = "https://twitter.com/intent/tweet?text=" + n + "&url=" + r;
-//                             break;
-//                         case "google+":
-//                             a = 500, c = 600, i = "https://plus.google.com/share?url=" + r;
-//                             break;
-//                         case "pinterest":
-//                             a = 850, c = 700, i = "http://www.pinterest.com/pin/find/?url=" + r + "&description=" + n;
-//                             break;
-//                         case "linkedin":
-//                             c = 500, a = 500, i = "http://www.linkedin.com/shareArticle?mini=true&url=" + r + "&title=" + n;
-//                             break;
-//                         case "pocket":
-//                             c = 600, a = 600, i = "https://getpocket.com/save?url=" + r + "&title=" + n
-//                     }
-//                     e.open(i, n, "height=" + c + ",width=" + a)
-//                 }
-//                 r.preventDefault(), n()
-//             };
-//             n.on("click", i), n.on("touchend", i)
-//         }
-//     }
-// }]);
 
 },{"./platforms/facebook.jsx":2,"./platforms/google.jsx":3,"./platforms/linkedin.jsx":4,"./platforms/pinterest.jsx":5,"./platforms/separator.jsx":6,"./platforms/twitter.jsx":7,"react":165,"react-dom":36}],2:[function(require,module,exports){
 var React = require('react');
