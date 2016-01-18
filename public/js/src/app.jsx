@@ -35,8 +35,8 @@ var Quoty = React.createClass({
             }, 10);
             this.setState({
               text: s.toString(),
-              title: "Some title",
-              url:  "Some url"
+              title: "My Fancy Title",
+              url:  "http://www.google.com"
             });
             return;
         }
@@ -56,7 +56,7 @@ var Quoty = React.createClass({
 
   render: function() {
     var platforms = [];
-    platforms.push(<ShareOnGooglePlus key="google" />);
+    platforms.push(<ShareOnGooglePlus key="google" title={this.state.title} text={this.state.text} url={this.state.url}/>);
     platforms.push(<ShareOnLinkedIn key="linkedin" />);
     platforms.push(<ShareOnTwitter key="twitter" title={this.state.title} text={this.state.text} url={this.state.url} />);
     platforms.push(<ShareOnFacebook key="facebook" />);

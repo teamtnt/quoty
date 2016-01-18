@@ -37,8 +37,8 @@ var Quoty = React.createClass({
         }, 10);
         this.setState({
           text: s.toString(),
-          title: "Some title",
-          url: "Some url"
+          title: "My Fancy Title",
+          url: "http://www.google.com"
         });
         return;
       }
@@ -58,7 +58,7 @@ var Quoty = React.createClass({
 
   render: function () {
     var platforms = [];
-    platforms.push(React.createElement(ShareOnGooglePlus, { key: 'google' }));
+    platforms.push(React.createElement(ShareOnGooglePlus, { key: 'google', title: this.state.title, text: this.state.text, url: this.state.url }));
     platforms.push(React.createElement(ShareOnLinkedIn, { key: 'linkedin' }));
     platforms.push(React.createElement(ShareOnTwitter, { key: 'twitter', title: this.state.title, text: this.state.text, url: this.state.url }));
     platforms.push(React.createElement(ShareOnFacebook, { key: 'facebook' }));
@@ -148,10 +148,18 @@ var React = require('react');
 var GooglePlus = React.createClass({
   displayName: "GooglePlus",
 
+  handleClick: function () {
+    var url = encodeURIComponent(this.props.url),
+        title = encodeURIComponent(this.props.title),
+        text = encodeURIComponent(this.props.text);
+
+    var popup = "https://plus.google.com/share?url=" + url;
+    window.open(popup, title, "height=" + 500 + ",width=" + 600);
+  },
   render: function () {
     return React.createElement(
       "button",
-      null,
+      { onClick: this.handleClick },
       React.createElement("span", { className: "fa fa-google-plus" })
     );
   }
