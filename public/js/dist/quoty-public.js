@@ -57,7 +57,7 @@ var Quoty = React.createClass({
       if (p.left || p.top) {
         menu.css({
           left: p.left + p.width / 2 - menu.width() / 2,
-          top: p.top - menu.height() - 10,
+          top: p.top + window.pageYOffset - menu.height() - 11,
           display: 'block',
           opacity: 0
         }).animate({
