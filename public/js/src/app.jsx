@@ -8,37 +8,13 @@ var Separator         = require('./platforms/separator.jsx')
 var ShareOnFacebook   = require('./platforms/facebook.jsx')
 var ShareOnPinterest  = require('./platforms/pinterest.jsx')
 
-var QuotyContainer = React.createClass({
-  render: function() {
-    var platforms = [];
-    platforms.push(<ShareOnGooglePlus key="google" />);
-    platforms.push(<ShareOnLinkedIn key="linkedin" />);
-    platforms.push(<ShareOnTwitter key="twitter" />);
-    platforms.push(<ShareOnFacebook key="facebook" />);
-    platforms.push(<ShareOnPinterest key="pinterest" />);
-
-    return (
-      <div className="highlightMenu">
-          <div className="highlightMenu-inner">
-            {platforms}
-          </div>
-          <div className="highlightMenu-arrowClip"><span className="highlightMenu-arrow"></span></div>
-      </div>
-    );
-  }
-});
-
 var Quoty = React.createClass({
   getInitialState: function() {
     return {windowWidth: window.innerWidth};
   },
 
-  handleResize: function(e) {
-    this.setState({windowWidth: window.innerWidth});
-  },
-
-  handleSelection: function() {
-    var menu = jQuery('.highlightMenu');
+  handleSelection: function(e) {
+    var menu = jQuery(this.refs.quotyContainer);
     var s = document.getSelection(),
         r = s.getRangeAt(0);
     if (r && s.toString()) {
@@ -57,6 +33,11 @@ var Quoty = React.createClass({
             setTimeout(function() {
                 menu.addClass('highlight_menu_animate');
             }, 10);
+            this.setState({
+              text: s.toString(),
+              title: "Some title",
+              url:  "Some url"
+            });
             return;
         }
     }
@@ -74,9 +55,21 @@ var Quoty = React.createClass({
   },
 
   render: function() {
+    var platforms = [];
+    platforms.push(<ShareOnGooglePlus key="google" />);
+    platforms.push(<ShareOnLinkedIn key="linkedin" />);
+    platforms.push(<ShareOnTwitter key="twitter" title={this.state.title} text={this.state.text} url={this.state.url} />);
+    platforms.push(<ShareOnFacebook key="facebook" />);
+    platforms.push(<ShareOnPinterest key="pinterest" />);
+
     return (
-      <QuotyContainer />
-    )
+      <div className="highlightMenu" ref="quotyContainer">
+          <div className="highlightMenu-inner">
+            {platforms}
+          </div>
+          <div className="highlightMenu-arrowClip"><span className="highlightMenu-arrow"></span></div>
+      </div>
+    );
   }
 });
 

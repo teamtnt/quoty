@@ -9,34 +9,6 @@ var Separator = require('./platforms/separator.jsx');
 var ShareOnFacebook = require('./platforms/facebook.jsx');
 var ShareOnPinterest = require('./platforms/pinterest.jsx');
 
-var QuotyContainer = React.createClass({
-  displayName: 'QuotyContainer',
-
-  render: function () {
-    var platforms = [];
-    platforms.push(React.createElement(ShareOnGooglePlus, { key: 'google' }));
-    platforms.push(React.createElement(ShareOnLinkedIn, { key: 'linkedin' }));
-    platforms.push(React.createElement(ShareOnTwitter, { key: 'twitter' }));
-    platforms.push(React.createElement(ShareOnFacebook, { key: 'facebook' }));
-    platforms.push(React.createElement(ShareOnPinterest, { key: 'pinterest' }));
-
-    return React.createElement(
-      'div',
-      { className: 'highlightMenu' },
-      React.createElement(
-        'div',
-        { className: 'highlightMenu-inner' },
-        platforms
-      ),
-      React.createElement(
-        'div',
-        { className: 'highlightMenu-arrowClip' },
-        React.createElement('span', { className: 'highlightMenu-arrow' })
-      )
-    );
-  }
-});
-
 var Quoty = React.createClass({
   displayName: 'Quoty',
 
@@ -44,12 +16,8 @@ var Quoty = React.createClass({
     return { windowWidth: window.innerWidth };
   },
 
-  handleResize: function (e) {
-    this.setState({ windowWidth: window.innerWidth });
-  },
-
-  handleSelection: function () {
-    var menu = jQuery('.highlightMenu');
+  handleSelection: function (e) {
+    var menu = jQuery(this.refs.quotyContainer);
     var s = document.getSelection(),
         r = s.getRangeAt(0);
     if (r && s.toString()) {
@@ -67,6 +35,11 @@ var Quoty = React.createClass({
         setTimeout(function () {
           menu.addClass('highlight_menu_animate');
         }, 10);
+        this.setState({
+          text: s.toString(),
+          title: "Some title",
+          url: "Some url"
+        });
         return;
       }
     }
@@ -84,7 +57,27 @@ var Quoty = React.createClass({
   },
 
   render: function () {
-    return React.createElement(QuotyContainer, null);
+    var platforms = [];
+    platforms.push(React.createElement(ShareOnGooglePlus, { key: 'google' }));
+    platforms.push(React.createElement(ShareOnLinkedIn, { key: 'linkedin' }));
+    platforms.push(React.createElement(ShareOnTwitter, { key: 'twitter', title: this.state.title, text: this.state.text, url: this.state.url }));
+    platforms.push(React.createElement(ShareOnFacebook, { key: 'facebook' }));
+    platforms.push(React.createElement(ShareOnPinterest, { key: 'pinterest' }));
+
+    return React.createElement(
+      'div',
+      { className: 'highlightMenu', ref: 'quotyContainer' },
+      React.createElement(
+        'div',
+        { className: 'highlightMenu-inner' },
+        platforms
+      ),
+      React.createElement(
+        'div',
+        { className: 'highlightMenu-arrowClip' },
+        React.createElement('span', { className: 'highlightMenu-arrow' })
+      )
+    );
   }
 });
 
@@ -219,10 +212,18 @@ var React = require('react');
 var ShareOnTwitter = React.createClass({
   displayName: "ShareOnTwitter",
 
+  handleClick: function () {
+    var url = encodeURIComponent(this.props.url),
+        title = encodeURIComponent(this.props.title),
+        text = encodeURIComponent(this.props.text);
+
+    var popup = "https://twitter.com/intent/tweet?text=" + text + "&url=" + url;
+    window.open(popup, title, "height=" + 500 + ",width=" + 700);
+  },
   render: function () {
     return React.createElement(
       "button",
-      null,
+      { onClick: this.handleClick },
       React.createElement("span", { className: "fa fa-twitter" })
     );
   }
