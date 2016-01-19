@@ -2,12 +2,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var ShareOnTwitter = require('./platforms/twitter.jsx');
-var ShareOnLinkedIn = require('./platforms/linkedin.jsx');
-var ShareOnGooglePlus = require('./platforms/google.jsx');
-var Separator = require('./platforms/separator.jsx');
-var ShareOnFacebook = require('./platforms/facebook.jsx');
-var ShareOnPinterest = require('./platforms/pinterest.jsx');
+var networks = [];
+networks['twitter'] = require('./platforms/twitter.jsx');
+networks['linkedin'] = require('./platforms/linkedin.jsx');
+networks['google'] = require('./platforms/google.jsx');
+networks['separator'] = require('./platforms/separator.jsx');
+networks['facebook'] = require('./platforms/facebook.jsx');
+networks['pinterest'] = require('./platforms/pinterest.jsx');
 
 var Quoty = React.createClass({
   displayName: 'Quoty',
@@ -57,20 +58,22 @@ var Quoty = React.createClass({
   },
 
   render: function () {
-    var platforms = [];
-    platforms.push(React.createElement(ShareOnGooglePlus, { key: 'google', title: this.state.title, text: this.state.text, url: this.state.url }));
-    platforms.push(React.createElement(ShareOnLinkedIn, { key: 'linkedin', title: this.state.title, text: this.state.text, url: this.state.url }));
-    platforms.push(React.createElement(ShareOnTwitter, { key: 'twitter', title: this.state.title, text: this.state.text, url: this.state.url }));
-    platforms.push(React.createElement(ShareOnFacebook, { key: 'facebook', title: this.state.title, text: this.state.text, url: this.state.url }));
-    platforms.push(React.createElement(ShareOnPinterest, { key: 'pinterest', title: this.state.title, text: this.state.text, url: this.state.url }));
-
+    this.platforms = [];
+    this.props.networks.split('|').forEach(function (network, index) {
+      this.platforms.push(React.createElement(networks[network], {
+        key: network,
+        title: this.state.title,
+        text: this.state.text,
+        url: this.state.url
+      }));
+    }, this);
     return React.createElement(
       'div',
       { className: 'highlightMenu', ref: 'quotyContainer' },
       React.createElement(
         'div',
         { className: 'highlightMenu-inner' },
-        platforms
+        this.platforms
       ),
       React.createElement(
         'div',
@@ -81,7 +84,7 @@ var Quoty = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(Quoty, null), document.getElementById('quotyContainer'));
+ReactDOM.render(React.createElement(Quoty, { networks: 'facebook|twitter|google|pinterest|linkedin' }), document.getElementById('quotyContainer'));
 
 },{"./platforms/facebook.jsx":2,"./platforms/google.jsx":3,"./platforms/linkedin.jsx":4,"./platforms/pinterest.jsx":5,"./platforms/separator.jsx":6,"./platforms/twitter.jsx":7,"react":165,"react-dom":36}],2:[function(require,module,exports){
 var React = require('react');

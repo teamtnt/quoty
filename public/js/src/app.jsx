@@ -1,12 +1,13 @@
-var React = require('react');
+var React    = require('react');
 var ReactDOM = require('react-dom');
 
-var ShareOnTwitter    = require('./platforms/twitter.jsx')
-var ShareOnLinkedIn   = require('./platforms/linkedin.jsx')
-var ShareOnGooglePlus = require('./platforms/google.jsx')
-var Separator         = require('./platforms/separator.jsx')
-var ShareOnFacebook   = require('./platforms/facebook.jsx')
-var ShareOnPinterest  = require('./platforms/pinterest.jsx')
+var networks = [];
+networks['twitter']   = require('./platforms/twitter.jsx')
+networks['linkedin']  = require('./platforms/linkedin.jsx')
+networks['google']    = require('./platforms/google.jsx')
+networks['separator'] = require('./platforms/separator.jsx')
+networks['facebook']  = require('./platforms/facebook.jsx')
+networks['pinterest'] = require('./platforms/pinterest.jsx')
 
 var Quoty = React.createClass({
   getInitialState: function() {
@@ -55,17 +56,19 @@ var Quoty = React.createClass({
   },
 
   render: function() {
-    var platforms = [];
-    platforms.push(<ShareOnGooglePlus key="google" title={this.state.title} text={this.state.text} url={this.state.url} />);
-    platforms.push(<ShareOnLinkedIn key="linkedin" title={this.state.title} text={this.state.text} url={this.state.url} />);
-    platforms.push(<ShareOnTwitter key="twitter" title={this.state.title} text={this.state.text} url={this.state.url} />);
-    platforms.push(<ShareOnFacebook key="facebook" title={this.state.title} text={this.state.text} url={this.state.url} />);
-    platforms.push(<ShareOnPinterest key="pinterest" title={this.state.title} text={this.state.text} url={this.state.url} />);
-
+    this.platforms = [];
+    this.props.networks.split('|').forEach(function(network, index) {
+      this.platforms.push(React.createElement(networks[network], {
+        key  : network,
+        title: this.state.title,
+        text : this.state.text,
+        url  : this.state.url
+      }));
+    }, this);
     return (
       <div className="highlightMenu" ref="quotyContainer">
           <div className="highlightMenu-inner">
-            {platforms}
+            {this.platforms}
           </div>
           <div className="highlightMenu-arrowClip"><span className="highlightMenu-arrow"></span></div>
       </div>
@@ -73,4 +76,4 @@ var Quoty = React.createClass({
   }
 });
 
-ReactDOM.render(<Quoty />, document.getElementById('quotyContainer'));
+ReactDOM.render(<Quoty networks="facebook|twitter|google|pinterest|linkedin" />, document.getElementById('quotyContainer'));
