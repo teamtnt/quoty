@@ -69,16 +69,16 @@ var Quoty = React.createClass({
     }, this);
     return React.createElement(
       'div',
-      { className: 'highlightMenu', ref: 'quotyContainer' },
+      { className: 'quoty', ref: 'quotyContainer' },
       React.createElement(
         'div',
-        { className: 'highlightMenu-inner' },
+        { className: 'quoty-inner' },
         this.platforms
       ),
       React.createElement(
         'div',
-        { className: 'highlightMenu-arrowClip' },
-        React.createElement('span', { className: 'highlightMenu-arrow' })
+        { className: 'quoty-arrowClip' },
+        React.createElement('span', { className: 'quoty-arrow' })
       )
     );
   }

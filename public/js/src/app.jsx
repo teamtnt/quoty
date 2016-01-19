@@ -66,11 +66,11 @@ var Quoty = React.createClass({
       }));
     }, this);
     return (
-      <div className="highlightMenu" ref="quotyContainer">
-          <div className="highlightMenu-inner">
+      <div className="quoty" ref="quotyContainer">
+          <div className="quoty-inner">
             {this.platforms}
           </div>
-          <div className="highlightMenu-arrowClip"><span className="highlightMenu-arrow"></span></div>
+          <div className="quoty-arrowClip"><span className="quoty-arrow"></span></div>
       </div>
     );
   }

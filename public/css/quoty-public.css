@@ -1,5 +1,5 @@
 
-.highlightMenu {
+.quoty {
     position: absolute;
     display: none;
     z-index: 1000;
@@ -7,7 +7,7 @@
     left: 0
 }
 
-.highlightMenu-inner {
+.quoty-inner {
     position: relative;
     background-image: linear-gradient(to bottom, rgba(49, 49, 47, 0.99), #262625);
     background-repeat: repeat-x;
@@ -15,7 +15,7 @@
     padding: 9px 5px;
 }
 
-.highlightMenu-inner button {
+.quoty-inner button {
     border: none;
     color: #FFF;
     font-size: 20px;
@@ -23,21 +23,21 @@
     background: rgba(0, 0, 0, 0);
 }
 
-.highlightMenu .separator {
+.quoty .separator {
     display: inline-block;
     vertical-align: top;
     width: 1px;
     height: 24px;
     background: rgba(255, 255, 255, 0.2);
 }
-.highlightMenu .highlightMenu-arrowClip {
+.quoty .quoty-arrowClip {
     position: absolute;
     bottom: -10px;
     left: 50%;
     clip: rect(10px 20px 20px 0);
     margin-left: -10px
 }
-.highlightMenu .highlightMenu-arrowClip .highlightMenu-arrow {
+.quoty .quoty-arrowClip .quoty-arrow {
     display: block;
     width: 20px;
     height: 20px;
