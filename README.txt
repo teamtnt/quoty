@@ -22,8 +22,8 @@ Features
 == Installation ==
 
 1. Upload `quoty.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('Quoty_hook'); ?>` in your templates
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Start sharing!
 
 == Frequently Asked Questions ==
 
