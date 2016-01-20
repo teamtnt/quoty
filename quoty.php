@@ -14,7 +14,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Quoty
- * Plugin URI:        http://example.com/quoty/
+ * Plugin URI:        https://wordpress.org/plugins/quoty/
  * Description:       A simple plugin for sharing selected text on social networks.
  * Version:           1.0.0
  * Author:            TNT Studio
