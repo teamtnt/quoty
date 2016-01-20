@@ -1,5 +1,6 @@
 var React    = require('react');
 var ReactDOM = require('react-dom');
+var $ = require('jquery');
 
 var networks = [];
 networks['twitter']   = require('./platforms/twitter.jsx')
@@ -12,14 +13,14 @@ networks['pinterest'] = require('./platforms/pinterest.jsx')
 var Quoty = React.createClass({
   getInitialState: function() {
     return {
-      url: jQuery('meta[property="og:url"]').attr("content") || jQuery('meta[property="og:url"]').attr("value") || window.location.href,
+      url: $('meta[property="og:url"]').attr("content") || $('meta[property="og:url"]').attr("value") || window.location.href,
       text: "",
       title: document.title,
     };
   },
 
   handleSelection: function(e) {
-    var menu = jQuery(this.refs.quotyContainer);
+    var menu = $(this.refs.quotyContainer);
     var s = document.getSelection(),
         r = s.getRangeAt(0);
     if (r && s.toString()) {
