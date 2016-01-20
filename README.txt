@@ -1,6 +1,6 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
+Contributors: nticaric
+Donate link: https://github.com/teamtnt/quoty
 Tags: selection, sharing, twitter, facebook, google, pinterest, linkedin, medium, sharer
 Requires at least: 3.0.1
 Tested up to: 3.4
@@ -13,6 +13,7 @@ A simple plugin for sharing selected text to social networks.
 == Description ==
 
 Quoty is a simple plugin that lets you share any text selected on the page.
+Currently supported platforms are: Twitter, Facebook, LinkedIn, Pinterest adn GooglePlus
 
 Features
 
@@ -26,27 +27,13 @@ Features
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= How does it work? =
 
-An answer to that question.
+You simply enable the plugin and on the frontend, you'll be able to select text and share it on twitter, google, facebook, pinterest or linkedin
 
-= What about foo bar? =
-
-Answer to foo bar dilemma.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Quoty in action
 
 == Changelog ==
-
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
