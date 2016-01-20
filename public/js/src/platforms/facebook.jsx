@@ -1,5 +1,3 @@
-var React = require('react');
-
 var ShareOnFacebook = React.createClass({
   handleClick: function() {
     var url = encodeURIComponent(this.props.url),

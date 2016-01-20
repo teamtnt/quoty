@@ -96,7 +96,9 @@ class Quoty_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->quoty, plugin_dir_url( __FILE__ ) . 'js/dist/quoty-public.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'react', plugin_dir_url( __FILE__ ) . 'js/dist/react.min.js', array(), $this->version, true );
+		wp_enqueue_script( 'react-dom', plugin_dir_url( __FILE__ ) . 'js/dist/react-dom.min.js', array('react'), $this->version, true );
+		wp_enqueue_script( $this->quoty, plugin_dir_url( __FILE__ ) . 'js/dist/quoty-public.js', array( 'jquery','react', 'react-dom' ), $this->version, true );
 
 	}
 

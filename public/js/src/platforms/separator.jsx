@@ -1,5 +1,3 @@
-var React = require('react');
-
 var Separator = React.createClass({
   render: function() {
     return (
