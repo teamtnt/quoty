@@ -9,7 +9,7 @@ var ShareOnTwitter = React.createClass({
   },
   render: function() {
     return (
-      <button onClick={this.handleClick}><span className="fa fa-twitter"></span></button>
+      <button onClick={this.handleClick} className="twitter"></button>
     );
   }
 });

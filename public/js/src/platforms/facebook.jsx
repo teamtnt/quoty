@@ -9,7 +9,7 @@ var ShareOnFacebook = React.createClass({
   },
   render: function() {
     return (
-      <button onClick={this.handleClick}><span className="fa fa-facebook"></span></button>
+      <button onClick={this.handleClick} className="facebook"></button>
     );
   }
 });

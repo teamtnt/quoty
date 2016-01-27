@@ -9,7 +9,7 @@ var ShareOnLinkedIn = React.createClass({
   },
   render: function() {
     return (
-      <button onClick={this.handleClick}><span className="fa fa-linkedin"></span></button>
+      <button onClick={this.handleClick} className="linkedin"></button>
     );
   }
 });

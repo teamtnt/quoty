@@ -83,11 +83,7 @@ var ShareOnFacebook = React.createClass({
     window.open(popup, title, "height=" + 300 + ",width=" + 600);
   },
   render: function () {
-    return React.createElement(
-      "button",
-      { onClick: this.handleClick },
-      React.createElement("span", { className: "fa fa-facebook" })
-    );
+    return React.createElement("button", { onClick: this.handleClick, className: "facebook" });
   }
 });
 
@@ -106,11 +102,7 @@ var GooglePlus = React.createClass({
     window.open(popup, title, "height=" + 600 + ",width=" + 500);
   },
   render: function () {
-    return React.createElement(
-      "button",
-      { onClick: this.handleClick },
-      React.createElement("span", { className: "fa fa-google-plus" })
-    );
+    return React.createElement("button", { onClick: this.handleClick, className: "google-plus" });
   }
 });
 
@@ -129,11 +121,7 @@ var ShareOnLinkedIn = React.createClass({
     window.open(popup, title, "height=" + 500 + ",width=" + 500);
   },
   render: function () {
-    return React.createElement(
-      "button",
-      { onClick: this.handleClick },
-      React.createElement("span", { className: "fa fa-linkedin" })
-    );
+    return React.createElement("button", { onClick: this.handleClick, className: "linkedin" });
   }
 });
 
@@ -152,11 +140,7 @@ var ShareOnPinterest = React.createClass({
     window.open(popup, title, "height=" + 700 + ",width=" + 850);
   },
   render: function () {
-    return React.createElement(
-      "button",
-      { onClick: this.handleClick },
-      React.createElement("span", { className: "fa fa-pinterest" })
-    );
+    return React.createElement("button", { onClick: this.handleClick, className: "pinterest" });
   }
 });
 
@@ -186,11 +170,7 @@ var ShareOnTwitter = React.createClass({
     window.open(popup, title, "height=" + 300 + ",width=" + 500);
   },
   render: function () {
-    return React.createElement(
-      "button",
-      { onClick: this.handleClick },
-      React.createElement("span", { className: "fa fa-twitter" })
-    );
+    return React.createElement("button", { onClick: this.handleClick, className: "twitter" });
   }
 });
 

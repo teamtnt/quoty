@@ -44,7 +44,7 @@ class Quoty_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $Quoty       The name of this plugin.
+	 * @param      string    $quoty       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $quoty, $version ) {
@@ -72,7 +72,7 @@ class Quoty_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->Quoty, plugin_dir_url( __FILE__ ) . 'js/quoty-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->quoty, plugin_dir_url( __FILE__ ) . 'js/quoty-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
