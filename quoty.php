@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://example.com
+ * @link              https://wordpress.org/plugins/quoty/
  * @since             1.0.0
  * @package           Quoty
  *
@@ -29,27 +29,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-quoty-activator.php
- */
-function activate_Quoty() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-quoty-activator.php';
-	Quoty_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-quoty-deactivator.php
- */
-function deactivate_Quoty() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-quoty-deactivator.php';
-	Quoty_Deactivator::deactivate();
-}
-
-register_activation_hook( __FILE__, 'activate_Quoty' );
-register_deactivation_hook( __FILE__, 'deactivate_Quoty' );
 
 /**
  * The core plugin class that is used to define internationalization,
