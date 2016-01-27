@@ -68,7 +68,7 @@ class Quoty {
 	 */
 	public function __construct() {
 
-		$this->Quoty = 'quoty';
+		$this->quoty = 'quoty';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -118,6 +118,11 @@ class Quoty {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-quoty-public.php';
+		
+		/**
+		 * The class responsible for defining all Settings.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/settings/class-quoty-settings.php';
 
 		$this->loader = new Quoty_Loader();
 
@@ -149,15 +154,17 @@ class Quoty {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Quoty_Admin( $this->get_Quoty(), $this->get_version() );
+		$plugin_admin = new Quoty_Admin( $this->get_quoty(), $this->get_version() );
+		$settings_init_general = new Quoty_Settings( $this->quoty );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'quoty_admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'settings_api_init' );
+		$this->loader->add_action( 'admin_init', $settings_init_general, 'settings_api_init' );
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		
 		$this->loader->add_filter( 'plugin_action_links_quoty/quoty.php', $plugin_admin, 'add_settings_link' );
-
 
 	}
 
@@ -170,7 +177,7 @@ class Quoty {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Quoty_Public( $this->get_Quoty(), $this->get_version() );
+		$plugin_public = new Quoty_Public( $this->quoty, $this->version );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -194,8 +201,8 @@ class Quoty {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_Quoty() {
-		return $this->Quoty;
+	public function get_quoty() {
+		return $this->quoty;
 	}
 
 	/**

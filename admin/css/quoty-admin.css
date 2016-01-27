@@ -1,4 +1,30 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+#poststuff {
+    padding-top: 15px;
+}
+.meta_box {
+    margin-top: -6px;
+    margin-left: -12px;
+    margin-bottom: -12px!important;
+}
+
+.meta_box select,
+.meta_box input.regular-text {
+    width: 100%!important;
+}
+
+.meta_box th{
+    background: #0073AA;
+    padding-left: 15px;
+    border-bottom: 1px solid #478AAB;
+    color: #fff;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 13px;
+}
+.meta_box td{
+    border-bottom: 1px solid #e6e6e6;
+}
+.notice, div.error, div.updated {
+    margin: 5px 20px 2px 0;
+}
