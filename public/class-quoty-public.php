@@ -60,8 +60,8 @@ class Quoty_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		
-		wp_enqueue_style( $this->quoty, plugin_dir_url( __FILE__ ) . 'css/quoty-public.css', array(), $this->version, 'all' );
+
+		wp_enqueue_style( $this->quoty, plugin_dir_url( __FILE__ ) . 'css/quoty-public.min.css', array(), $this->version, 'all' );
 	}
 
 	/**
