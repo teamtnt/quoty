@@ -15,7 +15,8 @@
   "devDependencies": {},
   "scripts": {
     "watch": "watchify -t [ babelify --presets [ react ] ]  ./js/src/app.jsx -o ./js/dist/quoty-public.js -v",
-    "build": "NODE_ENV=production browserify -t [ envify --NODE_ENV production  ] -t [ babelify --presets [ react ] ] ./js/src/app.jsx | uglifyjs -c -m >./js/dist/quoty-public.js"
+    "build": "NODE_ENV=production browserify -t [ envify --NODE_ENV production  ] -t [ babelify --presets [ react ] ] ./js/src/app.jsx | uglifyjs -c -m >./js/dist/quoty-public.js",
+    "css" : "uglifycss ./css/quoty-public.css > ./css/quoty-public.min.css"
   },
   "author": "Nenad Ticaric"
 }
