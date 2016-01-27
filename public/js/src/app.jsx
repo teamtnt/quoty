@@ -1,3 +1,6 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
 var networks = [];
 networks['twitter'] = require('./platforms/twitter.jsx');
 networks['linkedin'] = require('./platforms/linkedin.jsx');

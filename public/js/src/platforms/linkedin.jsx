@@ -1,3 +1,5 @@
+var React = require('react');
+
 var ShareOnLinkedIn = React.createClass({
   handleClick: function() {
     var url = encodeURIComponent(this.props.url),

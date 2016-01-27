@@ -13,7 +13,7 @@ A simple plugin for sharing selected text to social networks.
 == Description ==
 
 Quoty is a simple plugin that lets you share any text selected on the page.
-Currently supported platforms are: Twitter, Facebook, LinkedIn, Pinterest adn GooglePlus
+Currently supported platforms are: Twitter, Facebook, LinkedIn, Pinterest and GooglePlus
 
 Features
 

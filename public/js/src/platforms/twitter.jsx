@@ -1,3 +1,5 @@
+var React = require('react');
+
 var ShareOnTwitter = React.createClass({
   handleClick: function() {
     var max = 140 - this.props.url.length;
