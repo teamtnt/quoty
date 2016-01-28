@@ -12,4 +12,15 @@
  * @subpackage Quoty/public/partials
  */
 ?>
-<div id="quotyContainer"></div>
+<?php
+$platforms = [];
+$selector = ".entry-content p";
+if(isset(get_option('quoty_options' )['social-platforms'])) {
+ $platforms = get_option('quoty_options' )['social-platforms'];
+}
+if(isset(get_option('quoty_options' )['css-selector'])) {
+    if(get_option('quoty_options' )['css-selector'] != "")
+    $selector = get_option('quoty_options' )['css-selector'];
+}
+?>
+<div id="quotyContainer" platforms="<?php echo implode('|', $platforms)?>" selector="<?php echo $selector ?>"></div>

@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 var networks = [];
 networks['twitter'] = require('./platforms/twitter.jsx');
 networks['linkedin'] = require('./platforms/linkedin.jsx');
-networks['google'] = require('./platforms/google.jsx');
+networks['googleplus'] = require('./platforms/google.jsx');
 networks['separator'] = require('./platforms/separator.jsx');
 networks['facebook'] = require('./platforms/facebook.jsx');
 networks['pinterest'] = require('./platforms/pinterest.jsx');
@@ -22,9 +22,16 @@ var Quoty = React.createClass({
 
   handleSelection: function (e) {
     var menu = jQuery(this.refs.quotyContainer);
+
     var s = document.getSelection(),
         r = s.getRangeAt(0);
+
+
     if (r && s.toString()) {
+      if ( jQuery(s.baseNode).parents(this.props.selector).length != 1 ) { 
+        return;
+      }
+
       var p = r.getBoundingClientRect();
       if (p.left || p.top) {
         menu.css({
@@ -59,6 +66,7 @@ var Quoty = React.createClass({
   render: function () {
     this.platforms = [];
     this.props.networks.split('|').forEach(function (network, index) {
+      if(network == "") return;
       this.platforms.push(React.createElement(networks[network], {
         key: network,
         title: this.state.title,
@@ -70,4 +78,8 @@ var Quoty = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(Quoty, { networks: 'facebook|twitter|google|pinterest|linkedin' }), document.getElementById('quotyContainer'));
+var container = document.getElementById('quotyContainer');
+var netw = container.getAttribute('platforms');
+var selector = container.getAttribute('selector');
+
+ReactDOM.render(React.createElement(Quoty, { networks: netw, selector: selector }), container);
