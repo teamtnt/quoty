@@ -39,7 +39,7 @@ You simply enable the plugin and on the frontend, you'll be able to select text 
 
 == Changelog ==
 
-= 1.1.0
+= 1.1.0 =
 
 * Added Settings Page
 * Automatically trimming selected text for twitter
