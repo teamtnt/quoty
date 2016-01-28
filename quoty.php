@@ -30,6 +30,19 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-gens-votely-activator.php
+ */
+function activate_quoty() {
+    //we preselect all of the platforms
+    $platforms = array('social-platforms' => ['facebook', 'twitter','googleplus','pinterest','linkedin'] );
+    update_option( 'quoty_options', $platforms);
+}
+
+register_activation_hook( __FILE__, 'activate_quoty' );
+
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
