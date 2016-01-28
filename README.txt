@@ -35,5 +35,13 @@ You simply enable the plugin and on the frontend, you'll be able to select text 
 == Screenshots ==
 
 1. Quoty in action
+2. Quoty Settings
 
 == Changelog ==
+= 1.1.0
+
+* Added Settings Page
+* Automatically trimming selected text for twitter
+* A css selector can be used to define where quoty is displayed
+* Choosing which platforms should be inside the popup
+* SVG icons
