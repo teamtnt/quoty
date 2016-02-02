@@ -20,12 +20,15 @@ var Quoty = React.createClass({
     };
   },
 
+  handleMouseDown: function (e) {
+    document.getSelection().removeAllRanges();
+  },
+
   handleSelection: function (e) {
     var menu = jQuery(this.refs.quotyContainer);
 
     var s = document.getSelection(),
         r = s.getRangeAt(0);
-
 
     if (r && s.toString()) {
       if ( jQuery(s.baseNode).parents(this.props.selector).length != 1 ) { 
@@ -56,6 +59,7 @@ var Quoty = React.createClass({
   },
 
   componentDidMount: function () {
+    window.addEventListener('mousedown', this.handleMouseDown);
     window.addEventListener('mouseup', this.handleSelection);
   },
 
