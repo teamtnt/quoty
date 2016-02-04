@@ -83,7 +83,7 @@ class Quoty_Admin {
 	 */
 	public function quoty_admin_menu() {
 
-		 add_options_page( __('Qutoy Settings', $this->quoty), __('Qutoy Settings', $this->quoty), 'manage_options', $this->quoty, array($this, 'display_plugin_admin_page'));
+		 add_options_page( __('Quoty Settings', $this->quoty), __('Quoty Settings', $this->quoty), 'manage_options', $this->quoty, array($this, 'display_plugin_admin_page'));
 
 	}
 
