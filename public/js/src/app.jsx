@@ -21,17 +21,18 @@ var Quoty = React.createClass({
   },
 
   handleMouseDown: function (e) {
-    document.getSelection().removeAllRanges();
+    if(jQuery(e.target).parents('.quoty-inner').length != 1)
+      document.getSelection().removeAllRanges();
   },
 
   handleSelection: function (e) {
-    var menu = jQuery(this.refs.quotyContainer);
+    var menu = this.menu = jQuery(this.refs.quotyContainer);
 
     var s = document.getSelection(),
         r = s.getRangeAt(0);
 
     if (r && s.toString()) {
-      if ( jQuery(s.baseNode).parents(this.props.selector).length != 1 ) { 
+      if ( jQuery(s.baseNode || s.anchorNode).parents(this.props.selector).length != 1 ) { 
         return;
       }
 

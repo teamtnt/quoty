@@ -3,7 +3,6 @@ var React = require('react');
 var ShareOnTwitter = React.createClass({
   handleClick: function() {
     var max = 140 - this.props.url.length;
-    console.log(max)
     var url = encodeURIComponent(this.props.url),
     title   = encodeURIComponent(this.props.title),
     text    = this.props.text;
