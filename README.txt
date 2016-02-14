@@ -4,7 +4,7 @@ Donate link: https://github.com/teamtnt/quoty
 Tags: selection, sharing, twitter, facebook, google, pinterest, linkedin, medium, sharer
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,10 @@ You simply enable the plugin and on the frontend, you'll be able to select text 
 2. Quoty Settings
 
 == Changelog ==
+= 1.1.4 =
+
+* IE SVG icons fix
+ 
 = 1.1.3 = 
 
 * Fixed getRangeAt(0) index error
