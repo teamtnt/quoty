@@ -16,7 +16,7 @@
  * Plugin Name:       Quoty
  * Plugin URI:        https://wordpress.org/plugins/quoty/
  * Description:       A simple plugin for sharing selected text on social networks.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            TNT Studio
  * Author URI:        http://www.tntstudio.us/
  * License:           GPL-2.0+

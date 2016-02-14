@@ -21,15 +21,30 @@ var Quoty = React.createClass({
   },
 
   handleMouseDown: function (e) {
-    if(jQuery(e.target).parents('.quoty-inner').length != 1)
-      document.getSelection().removeAllRanges();
+    if(jQuery(e.target).parents('.quoty-inner').length != 1) {
+      if (window.getSelection().empty) {
+          window.getSelection().empty();
+      }
+      if (window.getSelection().removeAllRanges) {
+          window.getSelection().removeAllRanges();
+      }
+    }
   },
 
   handleSelection: function (e) {
     var menu = this.menu = jQuery(this.refs.quotyContainer);
 
-    var s = document.getSelection(),
-        r = s.getRangeAt(0);
+    var s;
+
+    if (window.getSelection) {
+        s = window.getSelection();
+    } else if (document.selection) {
+        s = document.selection.createRange();
+    }
+
+    if(s.rangeCount <= 0) return;
+
+    var r = s.getRangeAt(0);
 
     if (r && s.toString()) {
       if ( jQuery(s.baseNode || s.anchorNode).parents(this.props.selector).length != 1 ) { 
