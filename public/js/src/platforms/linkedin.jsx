@@ -6,7 +6,8 @@ var ShareOnLinkedIn = React.createClass({
     title   = encodeURIComponent(this.props.title),
     text    = encodeURIComponent(this.props.text);
 
-    var popup = "http://www.linkedin.com/shareArticle?mini=true&url=" + url + "&title=" + title;
+    var popup = "http://www.linkedin.com/shareArticle?mini=true&url=" + url 
+      + "&title=" + title + "&summary=" + text;
     window.open(popup, title, "height=" + 500 + ",width=" + 500)
   },
   render: function() {
